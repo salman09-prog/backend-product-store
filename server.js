@@ -31,7 +31,7 @@ app.get("*", function (req, res) {
 
 }
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     try {
         dbConnect();
         console.log(`Server started at port ${PORT}`);
