@@ -14,31 +14,28 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 
-app.use("/api/products",productRoutes);
+app.use("/api/products", productRoutes);
 
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname, "/frontend/dist")))
+  app.get("/test", (req, res) => {
+    res.json({
+      msg: "Update: Test was successfull",
+    });
+  });
 
-    app.get("/test",(req,res)=>{
-        res.json({
-            msg: "Update: Test was successfull"
-        })
-    })
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
-
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+  });
 }
 
 app.listen(PORT, () => {
-    try {
-        dbConnect();
-        console.log(`Server started at port ${PORT}`);
-    } catch (error) {
-        console.log(`Error in connecting to DB`, error);
-        process.exit(1) //1 is for failure
-    }
-
+  try {
+    dbConnect();
+    console.log(`Server started at port ${PORT}`);
+  } catch (error) {
+    console.log(`Error in connecting to DB`, error);
+    process.exit(1); //1 is for failure
+  }
 });
-
