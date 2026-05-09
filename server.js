@@ -21,7 +21,7 @@ if(process.env.NODE_ENV === "production"){
 
     app.get("/test",(req,res)=>{
         res.json({
-            msg: "Test was successfull"
+            msg: "Update: Test was successfull"
         })
     })
 
