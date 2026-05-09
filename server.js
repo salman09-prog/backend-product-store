@@ -19,12 +19,11 @@ app.use("/api/products",productRoutes);
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname, "/frontend/dist")))
 
-
-    app.get("/test",(req,res)=>{
-        res.json({
-            msg: "Test was successfull"
-        })
-    })
+    // app.get("/test",(req,res)=>{
+    //     res.json({
+    //         msg: "Test was successfull"
+    //     })
+    // })
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
